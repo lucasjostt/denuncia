@@ -31,11 +31,6 @@ export default function MeuPerfil() {
     alert('Senha alterada com sucesso!')
   }
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Aqui você implementaria a lógica para fazer upload da foto
-    console.log('Foto enviada')
-    alert('Foto de perfil atualizada com sucesso!')
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">
@@ -61,7 +56,6 @@ export default function MeuPerfil() {
                   type="file" 
                   className="hidden" 
                   accept="image/*"
-                  onChange={handlePhotoUpload}
                 />
               </Label>
             </CardContent>

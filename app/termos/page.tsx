@@ -78,7 +78,7 @@ export default function TermosDeUso() {
               </div>
             </div>
             <div className="mt-6 flex items-center space-x-2">
-              <Checkbox id="termos" checked={aceitoTermos} onCheckedChange={setAceitoTermos} />
+              <Checkbox id="termos" checked={aceitoTermos} onCheckedChange={(checked) => setAceitoTermos(checked === true)} />
               <Label htmlFor="termos">
                 Li e aceito os Termos de Uso e estou ciente das minhas responsabilidades ao utilizar esta plataforma.
               </Label>
