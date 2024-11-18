@@ -7,24 +7,10 @@ import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertCircle } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-
-
-
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)
   const [acceptedTerms, setAcceptedTerms] = useState(false)
-  const router = useRouter()
-
-
-const logar = (event: { preventDefault: () => void }) => {
-    event.preventDefault();  // Previne o comportamento padrão de submit do formulário
-    if (isLogin) {
-      router.push('/termos'); // Redireciona para a página de termos
-    } 
-}
-
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -64,8 +50,8 @@ const logar = (event: { preventDefault: () => void }) => {
                 </div>
               </>
             )}
-            <Button onClick={logar} className="w-full" disabled={!isLogin && !acceptedTerms}>
-                {isLogin ? 'Entrar' : 'Cadastrar'}
+            <Button type="submit" className="w-full" disabled={!isLogin && !acceptedTerms}>
+              {isLogin ? 'Entrar' : 'Cadastrar'}
             </Button>
           </form>
           <div className="mt-4 text-center">
