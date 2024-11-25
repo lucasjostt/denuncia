@@ -25,6 +25,7 @@ const categorias = [
 export default function SubmissaoDenuncia() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState<FileList | null>(null);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories(prev => 
@@ -32,6 +33,10 @@ export default function SubmissaoDenuncia() {
         ? prev.filter(c => c !== category)
         : [...prev, category]
     );
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUploadedFiles(e.target.files);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,7 +48,7 @@ export default function SubmissaoDenuncia() {
     setIsModalOpen(false);
     console.log('Denúncia submetida');
     alert("Sua denúncia será recebida por uma equipe, que irá investigar. Não desperdice o tempo e recursos públicos com denúncias falsas.");
-    // Aqui você implementaria a lógica de envio da denúncia
+    // Implementar lógica de envio da denúncia junto com arquivos
   };
 
   const cancelSubmit = () => {
@@ -94,6 +99,24 @@ export default function SubmissaoDenuncia() {
           <div>
             <Label htmlFor="endereco">Endereço da Criança ou Escola</Label>
             <Input id="endereco" placeholder="Digite o endereço da criança ou escola onde estuda" required />
+          </div>
+
+          <div>
+            <Label htmlFor="anexos">Anexar Imagens (opcional)</Label>
+            <Input 
+              id="anexos" 
+              type="file" 
+              accept="image/*" 
+              multiple 
+              onChange={handleFileChange} 
+            />
+            {uploadedFiles && (
+              <ul className="mt-2 text-sm text-gray-600">
+                {Array.from(uploadedFiles).map((file, index) => (
+                  <li key={index}>{file.name}</li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <div className="p-4 bg-yellow-100 rounded-md">

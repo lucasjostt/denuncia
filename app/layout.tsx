@@ -16,7 +16,7 @@ const geistMono = localFont({
 
 // Definindo os metadados, incluindo o favicon
 export const metadata: Metadata = {
-  title: "Seu Título",
+  title: "PACRE",
   description: "Descrição do seu site",
   icons: {
     icon: "@/favicon.ico", // Caminho para o favicon
